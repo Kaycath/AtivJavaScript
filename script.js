@@ -180,3 +180,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* EXERCÍCIO 5 - Sorteio com Promise */
+
+const startSorteioBtn = document.getElementById('start-sorteio');
+const sorteioResultado = document.getElementById('sorteio-resultado');
+
+function sorteio() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const numero = Math.floor(Math.random() * 10) + 1;
+            if (numero > 5) {
+                resolve(` Você ganhou! Número sorteado: ${numero}`);
+            } else {
+                reject(` Tente novamente. Número: ${numero}`);
+            }
+        }, 1000);
+    });
+}
+
+async function iniciarSorteio() {
+    startSorteioBtn.disabled = true;
+    sorteioResultado.textContent = "Sorteando...";
+    
+    let ganhou = false;
+    while (!ganhou) {
+        try {
+            const mensagem = await sorteio();
+            sorteioResultado.textContent = mensagem;
+            ganhou = true;
+        } catch (erro) {
+            sorteioResultado.textContent = erro;
+            await new Promise(res => setTimeout(res, 1000));
+        }
+    }
+
+    startSorteioBtn.disabled = false;
+}
+
+// Ativa o botão
+if (startSorteioBtn) {
+    startSorteioBtn.addEventListener('click', iniciarSorteio);
+}

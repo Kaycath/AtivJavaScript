@@ -273,3 +273,35 @@ h2 {
 #login-status.error {
     color: #dc3545; 
 }
+
+.sorteio-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#start-sorteio {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #ff9800;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-sorteio:hover {
+    background-color: #e68900;
+}
+
+#sorteio-resultado {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 15px;
+}
